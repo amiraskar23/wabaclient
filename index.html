@@ -244,7 +244,7 @@
     display:none;max-width:240px;line-height:1.5}
   .edit-hint.show{display:block}
 
-  /* ============ ИИ-РЕАНИМАЦИЯ ============ */
+  /* ============ РЕАНИМАЦИЯ ============ */
   .clients-col{width:324px;flex-shrink:0;border-right:.5px solid var(--line);
     background:var(--surface);display:flex;flex-direction:column;overflow:hidden}
   .closer-head{padding:22px 16px 14px;border-bottom:.5px solid var(--line)}
@@ -729,6 +729,69 @@
   .model-pick .mp-tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:980px;
     background:rgba(175,82,222,.15);color:var(--purple)}
 
+  /* ============ WABA: окно 24ч / шаблоны ============ */
+  .win-bar{display:flex;align-items:center;gap:9px;padding:9px 18px;font-size:12.5px;
+    border-top:.5px solid var(--line);letter-spacing:-.006em;line-height:1.35}
+  .win-bar .wb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .win-bar b{font-weight:600}
+  .win-bar.open{background:rgba(52,199,89,.09);color:var(--green-dark)}
+  .win-bar.open .wb-dot{background:var(--green);box-shadow:0 0 0 3px rgba(52,199,89,.2)}
+  .win-bar.closed{background:rgba(255,149,0,.12);color:var(--text)}
+  .win-bar.closed .wb-dot{background:var(--orange)}
+  .tpl-sheet{display:none;flex-direction:column;gap:9px;padding:14px 16px;max-height:300px;overflow-y:auto;
+    background:var(--material);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-top:.5px solid var(--line)}
+  .tpl-sheet.show{display:flex}
+  .tpl-sheet-cap{font-size:12px;font-weight:590;color:var(--text2);letter-spacing:-.006em}
+  .tpl-opt{text-align:left;padding:11px 13px;border-radius:12px;background:var(--fill);
+    transition:background .15s var(--ease),transform .2s var(--spring)}
+  .tpl-opt:hover{background:var(--fill-2)}
+  .tpl-opt:active{transform:scale(.99)}
+  .to-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+  .to-name{font-size:13.5px;font-weight:590;letter-spacing:-.012em}
+  .to-cat{font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px;background:rgba(0,122,255,.14);color:var(--blue);letter-spacing:.02em}
+  .to-text{font-size:12.5px;color:var(--text2);line-height:1.4;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .to-text b{color:var(--green-dark);background:rgba(52,199,89,.16);border-radius:4px;padding:0 3px;font-weight:600}
+  .bubble .tpl-mark{display:block;font-size:9px;font-weight:700;letter-spacing:.05em;color:var(--green-dark);
+    text-transform:uppercase;margin-bottom:3px;opacity:.85}
+
+  /* template moderation badges + create card */
+  .tag.pending{background:rgba(255,149,0,.16);color:#C97A00}
+  [data-theme="dark"] .tag.pending{color:#FF9F0A}
+  .tag.rejected{background:rgba(255,59,48,.14);color:var(--red)}
+  .card.create{display:flex;align-items:center;justify-content:center;gap:8px;border-style:dashed;border-width:1.5px;
+    color:var(--text2);font-weight:590;font-size:14px;min-height:128px}
+  .card.create:hover{color:var(--blue);border-color:var(--blue);transform:none;box-shadow:none}
+  .card.disabled{opacity:.5;pointer-events:none}
+
+  /* WABA quality pill + stat */
+  .qr-pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:590;padding:5px 12px;border-radius:980px;width:fit-content}
+  .qr-pill .d{width:7px;height:7px;border-radius:50%;background:currentColor}
+  .qr-pill.green{background:rgba(52,199,89,.15);color:var(--green-dark)}
+  .qr-pill.yellow{background:rgba(255,149,0,.16);color:#C97A00}
+  .qr-pill.red{background:rgba(255,59,48,.14);color:var(--red)}
+  .stat-box{display:flex;align-items:center;height:44px;padding:0 13px;background:var(--fill);border-radius:10px;font-size:14px;font-weight:590;letter-spacing:-.012em}
+
+  /* modal */
+  .modal-overlay{position:fixed;inset:0;z-index:260;background:rgba(0,0,0,.4);
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    display:none;align-items:center;justify-content:center;padding:24px}
+  .modal-overlay.show{display:flex;animation:fadein .2s var(--ease)}
+  .modal{width:100%;max-width:460px;background:var(--surface);border:.5px solid var(--line);
+    border-radius:20px;box-shadow:var(--shadow-lg);padding:26px;animation:rise .45s var(--spring)}
+  .modal h3{font-size:20px;font-weight:700;letter-spacing:-.021em;margin-bottom:5px}
+  .modal .m-sub{font-size:13.5px;color:var(--text2);margin-bottom:20px;line-height:1.45;letter-spacing:-.006em}
+  .modal .m-sub b{color:var(--text);background:var(--fill);border-radius:5px;padding:0 5px;font-weight:600}
+  .m-row{margin-bottom:14px}
+  .m-row label{display:block;font-size:13px;font-weight:590;color:var(--text2);margin-bottom:7px;letter-spacing:-.006em}
+  .modal input,.modal select,.modal textarea{width:100%;border:none;background:var(--fill);border-radius:10px;
+    padding:11px 13px;font:inherit;font-size:14px;letter-spacing:-.012em;outline:none;color:var(--text);
+    transition:box-shadow .2s var(--ease)}
+  .modal input:focus,.modal select:focus,.modal textarea:focus{box-shadow:0 0 0 4px rgba(0,122,255,.25)}
+  .modal textarea{resize:none;min-height:92px;line-height:1.45}
+  .m-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:4px}
+
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -801,7 +864,7 @@
     </button>
     <button class="nav-item" data-page="closer" onclick="go('closer',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/></svg>
-      ИИ-реанимация
+      Реанимация
     </button>
     <button class="nav-item" data-page="analytics" onclick="go('analytics',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19V10M10 19V5M16 19v-8M22 19H2"/></svg>
@@ -861,10 +924,12 @@
       </div>
     </div>
     <div class="chat-msgs" id="chatMsgs" style="display:none"></div>
+    <div class="win-bar" id="winBar" style="display:none"></div>
     <div class="suggest-wrap" id="suggestWrap">
       <div class="suggest-cap">✦ AI предлагает ответ</div>
       <div id="suggestChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
     </div>
+    <div class="tpl-sheet" id="tplSheet"></div>
     <div class="composer" id="composer" style="display:none">
       <button class="ai-suggest-btn" title="AI-варианты ответа" onclick="aiSuggest()"><span>✦</span></button>
       <textarea id="msgInput" rows="1" placeholder="Сообщение"
@@ -927,7 +992,7 @@
   </div>
 </section>
 
-<!-- ============ PAGE: ИИ-РЕАНИМАЦИЯ ============ -->
+<!-- ============ PAGE: РЕАНИМАЦИЯ ============ -->
 <section class="page" id="page-closer">
   <div class="clients-col">
     <div class="closer-head">
@@ -1331,24 +1396,44 @@
           <div class="grid-2">
             <div class="field-row">
               <label>Meta Business Account ID</label>
-              <div class="field-in"><input type="text" value="178 994 552 310 447" readonly></div>
+              <div class="field-in"><input id="setWaba" type="text" value="" readonly></div>
             </div>
             <div class="field-row">
               <label>Phone Number ID</label>
-              <div class="field-in"><input type="text" value="109 882 047 551 203" readonly></div>
+              <div class="field-in"><input id="setPhone" type="text" value="" readonly></div>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field-row">
+              <label>Номер отправителя</label>
+              <div class="field-in"><input id="setNumber" type="text" value="" readonly></div>
+            </div>
+            <div class="field-row">
+              <label>Качество номера (Meta)</label>
+              <span class="qr-pill green" id="setQuality" style="height:44px"><span class="d"></span>Высокое</span>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field-row">
+              <label>Лимит тарифа отправки</label>
+              <div class="stat-box" id="setTier">—</div>
+            </div>
+            <div class="field-row">
+              <label>Инициировано за 24 ч</label>
+              <div class="stat-box" id="setUsed">—</div>
             </div>
           </div>
           <div class="field-row">
             <label>Webhook URL</label>
             <div class="field-in">
-              <input type="text" value="https://api.aicloser.kz/webhooks/whatsapp" readonly>
+              <input id="setWebhook" type="text" value="" readonly>
               <button class="copy" onclick="copyField(this)">Копировать</button>
             </div>
           </div>
           <div class="field-row">
             <label>Access Token</label>
             <div class="field-in">
-              <input type="password" value="EAAGmZ8x4kLnBO7tq9wYf2pAccessTokenSecret" readonly>
+              <input id="setToken" type="password" value="" readonly>
               <button class="copy" onclick="revealToken(this)">Показать</button>
             </div>
           </div>
@@ -1396,6 +1481,27 @@
 
   </main>
 </div><!-- /appAdmin -->
+
+<!-- ============ MODAL: создать шаблон WhatsApp ============ -->
+<div class="modal-overlay" id="tplModal" onclick="if(event.target===this)closeTemplateModal()">
+  <div class="modal">
+    <h3>Новый шаблон WhatsApp</h3>
+    <p class="m-sub">Шаблон уйдёт на модерацию Meta (обычно до 24 ч). Переменные: <b>{{имя}}</b>, <b>{{дата}}</b>.</p>
+    <div class="m-row"><label>Название</label><input id="tmName" placeholder="Например: Возвращение · скидка" autocomplete="off"></div>
+    <div class="m-row"><label>Категория</label>
+      <select id="tmCat">
+        <option value="MARKETING">MARKETING — промо и реактивация</option>
+        <option value="UTILITY">UTILITY — сервисные уведомления</option>
+        <option value="AUTHENTICATION">AUTHENTICATION — коды и пароли</option>
+      </select>
+    </div>
+    <div class="m-row"><label>Текст сообщения</label><textarea id="tmText" placeholder="Здравствуйте, {{имя}}! ..."></textarea></div>
+    <div class="m-actions">
+      <button class="sp-reset" onclick="closeTemplateModal()">Отмена</button>
+      <button class="sp-done" onclick="submitTemplate()">Отправить на модерацию</button>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"><span class="dot"></span><span id="toastText"></span></div>
 
@@ -1544,6 +1650,96 @@ let selTemplate=null, selSegment=null, curClient=null, typingTimer=null;
 let curChat=null, chatFilter='all', whenMode='now';
 const bulkSel=new Set();
 
+/* ================= WABA · мок WhatsApp Cloud API =================
+   Контракт повторяет Graph API: POST /{phone_id}/messages,
+   POST /{waba_id}/message_templates, вебхуки statuses/messages.
+   Когда появится бэкенд — тело методов меняется на fetch(), UI не трогаем. */
+const WABA=(function(){
+  const HOUR=36e5, DAY=24*HOUR;
+  const account={
+    wabaId:'178 994 552 310 447', phoneId:'109 882 047 551 203',
+    number:'+7 727 244 18 32', name:'Фитнес-клуб «FitZone»', verified:true,
+    quality:'GREEN', tier:'10K', tierLimit:10000, sentToday:1840,
+    webhook:'https://api.dozhimai.kz/webhooks/whatsapp',
+    token:'EAAGmZ8x4kLnBO7tq9wYf2pAccessTokenSecret'
+  };
+  let tpls=[];
+  const windows={};                       // contactId -> ts последнего входящего
+  const subs={message:[],status:[],template:[]};
+  function on(ev,fn){(subs[ev]||(subs[ev]=[])).push(fn);}
+  function emit(ev,p){(subs[ev]||[]).forEach(fn=>fn(p));}
+  let seq=1; const wamid=()=>'wamid.HBg'+Date.now().toString(36)+(seq++);
+  const slug=s=>s.toLowerCase().replace(/[^a-zа-я0-9]+/gi,'_').replace(/^_|_$/g,'').slice(0,40)||'tpl_'+Date.now();
+
+  function markInbound(id){windows[id]=Date.now();}
+  function windowOpen(id){const t=windows[id];return !!t&&Date.now()-t<DAY;}
+  function windowLeft(id){const t=windows[id];return t?Math.max(0,DAY-(Date.now()-t)):0;}
+
+  // вебхук-цепочка статусов: sent → delivered → read
+  function flow(id,contactId,read){
+    setTimeout(()=>emit('status',{id,contactId,status:'sent'}),300);
+    setTimeout(()=>emit('status',{id,contactId,status:'delivered'}),900+Math.random()*700);
+    if(read)setTimeout(()=>emit('status',{id,contactId,status:'read'}),1900+Math.random()*1400);
+  }
+  // POST /{phone_id}/messages {type:'text'} — только в окне 24ч
+  function sendText(contactId,text){
+    if(!windowOpen(contactId))return{error:{code:131047,title:'re_engagement_message',
+      message:'вне окна 24 часов — свободный текст недоступен, нужен шаблон.'}};
+    const id=wamid(); account.sentToday++; flow(id,contactId,true);
+    return{messaging_product:'whatsapp',messages:[{id}]};
+  }
+  // POST /{phone_id}/messages {type:'template'} — инициирует диалог в любой момент
+  function sendTemplate(contactId,wabaName,vars){
+    const t=tpls.find(x=>x.wabaName===wabaName);
+    if(!t)return{error:{code:132001,message:'шаблон не найден'}};
+    if(t.status!=='APPROVED')return{error:{code:132000,message:'шаблон не одобрен Meta'}};
+    const id=wamid(); account.sentToday++; flow(id,contactId,false);
+    return{messaging_product:'whatsapp',messages:[{id}],rendered:fill(t,vars||{}),category:t.category};
+  }
+  // спец-кейс реанимации: первое касание холодного лида = re-engagement шаблон
+  function sendCampaign(contactId,text){const id=wamid();account.sentToday++;flow(id,contactId,false);return{messages:[{id}]};}
+  function fill(t,vars){return t.text.replace(/\{\{(.*?)\}\}/g,(_,k)=>vars[k]!=null?vars[k]:'{{'+k+'}}');}
+  // POST /{waba_id}/message_templates — на модерацию Meta
+  function createTemplate(data){
+    const t={id:Date.now(),name:data.name,wabaName:slug(data.name),tag:data.category,
+      category:data.category,text:data.text,lang:'ru',status:'PENDING',media:false};
+    tpls.unshift(t); emit('template',{status:'PENDING',t});
+    setTimeout(()=>{
+      const ok=Math.random()<0.85;
+      t.status=ok?'APPROVED':'REJECTED';
+      t.reason=ok?null:'тело содержит обещание без конкретики — уточните оффер.';
+      emit('template',{status:t.status,reason:t.reason,t});
+    },2800+Math.random()*1600);
+    return t;
+  }
+  function getTemplates(){return tpls;}
+  function init(seedTpls,seedChats){
+    tpls=seedTpls;
+    tpls.forEach(t=>{t.status=t.status||'APPROVED';t.category=t.category||t.tag;t.wabaName=t.wabaName||slug(t.name);t.lang=t.lang||'ru';});
+    seedChats.forEach(c=>{
+      const last=c.msgs[c.msgs.length-1];
+      if(last&&last.in&&/^\d{1,2}:\d{2}$/.test(last.time))
+        windows[c.id]=Date.now()-Math.round((Math.random()*4+0.2)*HOUR); // открыто, ~20-24ч в запасе
+    });
+  }
+  return{account,on,emit,markInbound,windowOpen,windowLeft,sendText,sendTemplate,sendCampaign,createTemplate,getTemplates,init};
+})();
+
+WABA.init(templates,chats);
+// вебхук статусов доставки → обновляем «галочки» у сообщения по wamid
+WABA.on('status',ev=>{
+  const chat=chatById(ev.contactId); if(!chat)return;
+  const m=chat.msgs.find(x=>x._id===ev.id); if(!m)return;
+  m.status=ev.status;
+  if(curChat&&curChat.id===chat.id)renderMsgs();
+});
+// вебхук модерации шаблонов → перерисовываем карточки + тост
+WABA.on('template',ev=>{
+  if(typeof renderTemplates==='function')renderTemplates();
+  if(ev.status==='APPROVED')toast(`✓ Meta одобрила шаблон «${ev.t.name}»`);
+  else if(ev.status==='REJECTED')toast(`Meta отклонила «${ev.t.name}»: ${ev.reason||''}`);
+});
+
 /* ================= HELPERS ================= */
 function timeNow(){return new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'});}
 function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
@@ -1604,14 +1800,37 @@ function animateAnalytics(){
 
 /* ================= BROADCAST ================= */
 const tWrap=document.getElementById('templates');
-templates.forEach(t=>{
-  const c=document.createElement('button');c.className='card';
-  c.innerHTML=`<span class="tag ok">${t.tag} · одобрен</span>${t.media?'<span class="tag media">📷 медиа</span>':''}<h4>${t.name}</h4><p>${t.text}</p>`;
-  c.onclick=()=>{selTemplate=t;
-    tWrap.querySelectorAll('.card').forEach(x=>x.classList.remove('selected'));
-    c.classList.add('selected');refreshBroadcast();};
-  tWrap.appendChild(c);
-});
+const TPL_BADGE={APPROVED:['ok','одобрен'],PENDING:['pending','на модерации'],REJECTED:['rejected','отклонён']};
+function renderTemplates(){
+  tWrap.innerHTML='';
+  WABA.getTemplates().forEach(t=>{
+    const c=document.createElement('button');
+    c.className='card'+(t.status!=='APPROVED'?' disabled':'')+(selTemplate&&selTemplate.id===t.id?' selected':'');
+    const b=TPL_BADGE[t.status]||TPL_BADGE.APPROVED;
+    c.innerHTML=`<span class="tag ${b[0]}">${t.category} · ${b[1]}</span>${t.media?'<span class="tag media">📷 медиа</span>':''}<h4>${t.name}</h4><p>${t.text}</p>`;
+    if(t.status==='APPROVED')c.onclick=()=>{selTemplate=t;renderTemplates();refreshBroadcast();};
+    tWrap.appendChild(c);
+  });
+  const add=document.createElement('button');add.className='card create';
+  add.innerHTML='<span>＋ Создать шаблон</span>';
+  add.onclick=openTemplateModal;
+  tWrap.appendChild(add);
+}
+renderTemplates();
+
+/* ---- модерация шаблонов (Message Templates API) ---- */
+function openTemplateModal(){document.getElementById('tplModal').classList.add('show');setTimeout(()=>document.getElementById('tmName').focus(),60);}
+function closeTemplateModal(){document.getElementById('tplModal').classList.remove('show');}
+function submitTemplate(){
+  const name=document.getElementById('tmName').value.trim()||'Новый шаблон';
+  const cat=document.getElementById('tmCat').value;
+  const text=document.getElementById('tmText').value.trim()||'Здравствуйте, {{имя}}!';
+  WABA.createTemplate({name,category:cat,text});
+  closeTemplateModal();
+  renderTemplates();
+  toast('Шаблон отправлен на модерацию Meta — обычно до 24 ч');
+  document.getElementById('tmName').value='';document.getElementById('tmText').value='';
+}
 const sWrap=document.getElementById('segments');
 segments.forEach(s=>{
   const c=document.createElement('button');c.className='seg';
@@ -1653,8 +1872,11 @@ function refreshBroadcast(){
   }
   btn.textContent=whenMode==='now'?'Запустить рассылку':'Запланировать рассылку';
   if(selTemplate&&selSegment){
-    info.innerHTML=`Шаблон <b>«${selTemplate.name}»</b> → сегмент <b>«${selSegment.name}»</b> · <b>${selSegment.n.toLocaleString('ru')}</b> получателей`+
-      (whenMode==='later'?` · <b>отложенная</b>`:'');
+    const a=WABA.account, remaining=a.tierLimit-a.sentToday, over=selSegment.n>remaining;
+    info.innerHTML=`Шаблон <b>«${selTemplate.name}»</b> (${selTemplate.category}) → сегмент <b>«${selSegment.name}»</b> · <b>${selSegment.n.toLocaleString('ru')}</b> получателей`+
+      (whenMode==='later'?` · <b>отложенная</b>`:'')+
+      `<br><span style="color:var(--text2);font-size:12px">Номер ${a.number} · качество <b style="color:var(--green-dark)">${a.quality}</b> · лимит ${a.tier}/сутки · оплата Meta за сообщение категории ${selTemplate.category}.`+
+      (over?` <b style="color:#C97A00">Сегмент больше дневного лимита (${remaining.toLocaleString('ru')}) — часть уйдёт завтра.</b>`:'')+`</span>`;
     btn.disabled=false;
   }else{
     info.textContent= selTemplate? "Теперь выберите аудиторию.":"Выберите шаблон и аудиторию — превью обновится справа.";
@@ -1664,6 +1886,8 @@ function refreshBroadcast(){
 
 function launch(){
   if(whenMode==='later'){scheduleBroadcast();return;}
+  if(!selTemplate||selTemplate.status!=='APPROVED'){toast('Выберите утверждённый шаблон');return;}
+  if(WABA.account.quality==='RED'&&selTemplate.category==='MARKETING'){toast('Низкое качество номера — маркетинг ограничен Meta');return;}
   const wrap=document.getElementById('progress');
   const bar=document.getElementById('progBar');
   const num=document.getElementById('progNum');
@@ -1671,13 +1895,19 @@ function launch(){
   wrap.classList.add('show');done.classList.remove('show');
   bar.style.width='0';
   document.getElementById('launchBtn').disabled=true;
-  const total=selSegment.n;let sent=0;
-  const step=Math.max(1,Math.round(total/60));
+  // лимит тарифа: сегодня уходит не больше остатка дневного лимита номера
+  const remaining=Math.max(0,WABA.account.tierLimit-WABA.account.sentToday);
+  const total=Math.min(selSegment.n,remaining||selSegment.n);
+  let sent=0; const step=Math.max(1,Math.round(total/60));
   const iv=setInterval(()=>{
     sent=Math.min(total,sent+step+Math.round(Math.random()*step));
     bar.style.width=(sent/total*100)+'%';
     num.textContent=`${sent.toLocaleString('ru')} / ${total.toLocaleString('ru')}`;
-    if(sent>=total){clearInterval(iv);done.classList.add('show');
+    if(sent>=total){clearInterval(iv);
+      WABA.account.sentToday+=total;
+      done.innerHTML=`✓ Отправлено через WhatsApp Cloud API · доставлено 98%, прочитано 41%, ошибок 0`+
+        (total<selSegment.n?` · ${(selSegment.n-total).toLocaleString('ru')} перенесено на завтра (лимит тарифа)`:'');
+      done.classList.add('show');
       toast(`Рассылка «${selTemplate.name}» отправлена`);
       document.getElementById('launchBtn').disabled=false;}
   },45);
@@ -1698,7 +1928,7 @@ function scheduleBroadcast(){
   toast(`Рассылка запланирована на ${when}`);
 }
 
-/* ================= ИИ-РЕАНИМАЦИЯ ================= */
+/* ================= РЕАНИМАЦИЯ ================= */
 const list=document.getElementById('clientList');
 let searchState={q:'',reason:'all',days:'all'};
 let visibleIds=[];
@@ -1803,10 +2033,10 @@ function deleteSelected(){
 function sendAll(){
   const targets=bulkSel.size?clients.filter(c=>bulkSel.has(c.id)):clients.filter(matchClient);
   if(!targets.length){toast('Нет клиентов для отправки');return;}
-  targets.forEach(c=>{c.generated=true;c.sent=true;});
+  targets.forEach(c=>{c.generated=true;c.sent=true;const chat=chatById(c.id);if(chat)WABA.sendCampaign(chat.id,c.offer||'');});
   bulkSel.clear();
   renderClients();
-  toast(`Отправлено офферов: ${targets.length} 🚀`);
+  toast(`Отправлено ${targets.length} re-engagement шаблонов (вне окна 24 ч) 🚀`);
 }
 
 renderClients();
@@ -1953,18 +2183,20 @@ function sendOffer(){
   const meta=document.querySelector('#waCloser .bubble .meta');
   if(meta)meta.innerHTML=`${timeNow()} <span class="t3">✓✓</span>`;
   const chat=chatById(curClient.id);
+  const first=curClient.name.split(' ')[0];
   if(chat){
-    chat.msgs.push({in:false,text:curClient.offer,time:timeNow(),status:'sent'});
-    progressStatus(chat,chat.msgs.length-1);
+    const cold=!WABA.windowOpen(chat.id);   // потерянный лид → окно закрыто
+    const res=WABA.sendCampaign(chat.id,curClient.offer);
+    chat.msgs.push({in:false,text:curClient.offer,time:timeNow(),status:'sent',_id:res.messages[0].id,_tpl:cold?'MARKETING':null});
     renderChatList();
-    toast(`Оффер отправлен — открываю чат с ${curClient.name.split(' ')[0]}`);
+    toast(cold?`Вне окна 24ч → ушло re-engagement шаблоном. Открываю чат с ${first}`:`Оффер отправлен — открываю чат с ${first}`);
     setTimeout(()=>{
       go('chats',document.querySelector('[data-page="chats"]'));
       openChat(chat);
       simulateReply(chat);
     },900);
   }else{
-    toast(`Оффер отправлен — ${curClient.name.split(' ')[0]}`);
+    toast(`Оффер отправлен — ${first}`);
   }
 }
 
@@ -2015,7 +2247,6 @@ function openChat(c){
   document.getElementById('chatEmpty').style.display='none';
   document.getElementById('chatHead').style.display='';
   document.getElementById('chatMsgs').style.display='';
-  document.getElementById('composer').style.display='';
   hideSuggest();
   const ava=document.getElementById('chAva');
   ava.style.background=AVA_COLORS[c.color];
@@ -2023,7 +2254,47 @@ function openChat(c){
   document.getElementById('chName').textContent=c.name;
   setStatus(c.online?'в сети':'был(а) недавно');
   renderMsgs();renderChatList();renderInfo();
-  document.getElementById('msgInput').focus();
+  renderWindow(c);
+}
+
+/* ---- окно 24 часа (WhatsApp customer service window) ---- */
+function fmtLeft(ms){const h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4);return h?`${h} ч ${m} мин`:`${m} мин`;}
+function renderWindow(c){
+  const bar=document.getElementById('winBar');
+  const composer=document.getElementById('composer');
+  const sheet=document.getElementById('tplSheet');
+  bar.style.display='flex';
+  if(WABA.windowOpen(c.id)){
+    bar.className='win-bar open';
+    bar.innerHTML=`<span class="wb-dot"></span><span>Окно 24 ч <b>открыто</b> · ещё ${fmtLeft(WABA.windowLeft(c.id))} — можно писать свободно</span>`;
+    composer.style.display='flex'; sheet.classList.remove('show');
+    document.getElementById('msgInput').focus();
+  }else{
+    bar.className='win-bar closed';
+    bar.innerHTML=`<span class="wb-dot"></span><span>Окно 24 ч <b>закрыто</b> — клиент молчит больше суток. По правилам WhatsApp доступен только шаблон.</span>`;
+    composer.style.display='none'; hideSuggest();
+    renderTplSheet(c); sheet.classList.add('show');
+  }
+}
+function renderTplSheet(c){
+  const sheet=document.getElementById('tplSheet');
+  const tpls=WABA.getTemplates().filter(t=>t.status==='APPROVED');
+  sheet.innerHTML=`<div class="tpl-sheet-cap">Возобновить диалог — выберите утверждённый шаблон:</div>`+
+    tpls.map(t=>`<button class="tpl-opt" onclick="sendTemplateToChat(${t.id})">
+        <div class="to-top"><span class="to-name">${t.name}</span><span class="to-cat">${t.category}</span></div>
+        <div class="to-text">${escapeHtml(t.text).replace(/\{\{(.*?)\}\}/g,'<b>$1</b>')}</div>
+      </button>`).join('');
+}
+function sendTemplateToChat(id){
+  if(!curChat)return;
+  const t=WABA.getTemplates().find(x=>x.id===id); if(!t)return;
+  const first=curChat.name.split(' ')[0];
+  const res=WABA.sendTemplate(curChat.id,t.wabaName,{'имя':first,'дата':'до конца недели'});
+  if(res.error){toast('WhatsApp #'+res.error.code+': '+res.error.message);return;}
+  curChat.msgs.push({in:false,text:res.rendered,time:timeNow(),status:'sent',_id:res.messages[0].id,_tpl:res.category});
+  renderMsgs();renderChatList();
+  toast(`Шаблон «${t.name}» (${res.category}) отправлен`);
+  simulateReply(curChat);   // клиент отвечает → markInbound откроет окно
 }
 
 function setStatus(text,typing){
@@ -2037,7 +2308,8 @@ function renderMsgs(){
   curChat.msgs.forEach(m=>{
     const d=document.createElement('div');
     d.className='bubble'+(m.in?' in':'');
-    d.innerHTML=`${escapeHtml(m.text)}<div class="meta">${m.time}${m.in?'':' '+ticksHtml(m.status||'read')}</div>`;
+    const mark=m._tpl?`<span class="tpl-mark">📋 шаблон · ${m._tpl}</span>`:'';
+    d.innerHTML=`${mark}${escapeHtml(m.text)}<div class="meta">${m.time}${m.in?'':' '+ticksHtml(m.status||'read')}</div>`;
     wrap.appendChild(d);
   });
   wrap.scrollTop=wrap.scrollHeight;
@@ -2054,8 +2326,9 @@ function sendMsg(){
   const inp=document.getElementById('msgInput');
   const text=inp.value.trim();
   if(!text||!curChat)return;
-  curChat.msgs.push({in:false,text,time:timeNow(),status:'sent'});
-  progressStatus(curChat,curChat.msgs.length-1);
+  const res=WABA.sendText(curChat.id,text);   // POST /{phone_id}/messages
+  if(res.error){toast('WhatsApp #'+res.error.code+': '+res.error.message);renderWindow(curChat);return;}
+  curChat.msgs.push({in:false,text,time:timeNow(),status:'sent',_id:res.messages[0].id});
   inp.value='';inp.style.height='auto';
   hideSuggest();
   renderMsgs();renderChatList();
@@ -2082,11 +2355,12 @@ function simulateReply(c){
         return;
       }
       c.msgs.push({in:true,text:reply,time:timeNow()});
+      WABA.markInbound(c.id);   // входящее открывает/продлевает окно 24ч
       ping();
       if(curChat&&curChat.id===c.id){
         const t=document.getElementById('typingBubble');if(t)t.remove();
         setStatus(c.online?'в сети':'был(а) недавно');
-        renderMsgs();
+        renderMsgs();renderWindow(c);
       }else{c.unread++;flashChatId=c.id;}
       renderChatList();
     },1600+Math.random()*800);
@@ -2383,9 +2657,22 @@ function revealToken(btn){
   btn.textContent=hidden?'Скрыть':'Показать';
 }
 
+/* ---- настройки: живые данные WABA-аккаунта ---- */
+function fillSettings(){
+  const a=WABA.account, set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v;};
+  set('setWaba',a.wabaId);set('setPhone',a.phoneId);set('setNumber',a.number);
+  set('setWebhook',a.webhook);set('setToken',a.token);
+  const q=document.getElementById('setQuality');
+  if(q){q.className='qr-pill '+a.quality.toLowerCase();
+    q.innerHTML=`<span class="d"></span>${a.quality==='GREEN'?'Высокое':a.quality==='YELLOW'?'Среднее':'Низкое'} · ${a.quality}`;}
+  const tier=document.getElementById('setTier');if(tier)tier.textContent=`${a.tier} сообщений / 24 ч`;
+  const used=document.getElementById('setUsed');if(used)used.textContent=`${a.sentToday.toLocaleString('ru')} из ${a.tierLimit.toLocaleString('ru')}`;
+}
+
 /* ================= SESSION RESTORE ================= */
 (function restore(){
   try{if(localStorage.getItem('aic_theme')==='dark')setTheme(true);}catch(e){}
+  fillSettings();
   let s=null;
   try{s=JSON.parse(sessionStorage.getItem('aic_session'));}catch(e){}
   if(s&&s.role){enterApp(s.role,s.user);}
